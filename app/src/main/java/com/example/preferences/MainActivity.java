@@ -26,9 +26,6 @@ public class MainActivity extends AppCompatActivity {
     private EditText NotePad;
     private TextView tvDate;
     private Calendar calendar;
-    private SimpleDateFormat simpleDateFormat;
-
-    private String date;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,29 +36,13 @@ public class MainActivity extends AppCompatActivity {
         NotePad=findViewById(R.id.notePad);
         tvDate=findViewById(R.id.date);
         calendar=Calendar.getInstance();
-       /* simpleDateFormat=new SimpleDateFormat("dd/MM/yyyy");
-        int hour=calendar.get(Calendar.HOUR);
-        int minut=calendar.get(Calendar.MINUTE);
-        int AM_PM=calendar.get(Calendar.AM_PM);
-        date=simpleDateFormat.format(calendar.getTime());
-        if(AM_PM==1) {
-            tvDate.setText("Last Update: " + date + " " + hour + ":" + minut + "PM");
-        }
-        else {
-            tvDate.setText("Last Update: " + date + " " + hour + ":" + minut + "AM");
-        }*/
+
         NotePad.setScroller(new Scroller(getApplicationContext()));
         NotePad.setVerticalScrollBarEnabled(true);
         NotePad.setScrollBarSize(20);
+
         loadFile();
 
-       /* SharedPreferences prefs=getPreferences(MODE_PRIVATE);
-        String restoredText=prefs.getString("text",null);
-        String lastModified=prefs.getString("dateTime",null);
-        if(!TextUtils.isEmpty(restoredText)){
-          //  tvDate.setText(lastModified);
-            NotePad.setText(restoredText);
-        }*/
     }
 
     private void loadFile() {
@@ -99,12 +80,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-
             saveData();
-       /* SharedPreferences.Editor editor=getPreferences(MODE_PRIVATE).edit();
-        //editor.putString("text",NotePad.getText().toString());
-       // editor.putString("dateTime",tvDate.getText().toString());
-        editor.commit();*/
         super.onBackPressed();
     }
 
